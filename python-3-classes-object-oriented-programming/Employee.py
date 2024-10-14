@@ -19,6 +19,10 @@ class Employee:
             f"position={repr(self.position)}, "
             f"salary={repr(self.salary)})"
         )
+
+    def __add__(self, other):
+        return Employee("New", self.age + other.age, "dev", 2000)
+
 employee1 = Employee("Ji-Soo", 38, "developer", 1200)
 employee2 = Employee("Lauren", 44, "tester", 1000)
 print(employee1)
@@ -28,4 +32,9 @@ print(__name__)
 print(employee1.name)
 
 print(eval(repr(employee1)))
+
+employee3 = employee1.__add__(employee2)
+employee4 = employee1+employee2
+print(employee4)
+assert(str(employee3) == str(employee4))
 
