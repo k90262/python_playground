@@ -6,7 +6,7 @@ class Employee:
         self.salary = salary
 
     def increase_salary(self, percent):
-        self.salary += self.salary * (percent / 100)
+        self._salary += self._salary * (percent / 100)
 
     def __str__(self):
         return f"{self.name} is {self.age} years old. Employee is a {self.position} with the salary of {self.salary}"
@@ -23,6 +23,20 @@ class Employee:
     def __add__(self, other):
         return Employee("New", self.age + other.age, "dev", 2000)
 
+    @property
+    def salary(self):
+        return self._salary
+
+    @salary.setter
+    def salary(self, salary):
+        if salary < 1000:
+            raise ValueError("Minimum wage is $1000")
+        self._salary = salary
+
+    @property
+    def annual_salary(self):
+        return self.salary * 12
+
 employee1 = Employee("Ji-Soo", 38, "developer", 1200)
 employee2 = Employee("Lauren", 44, "tester", 1000)
 print(employee1)
@@ -37,4 +51,8 @@ employee3 = employee1.__add__(employee2)
 employee4 = employee1+employee2
 print(employee4)
 assert(str(employee3) == str(employee4))
+
+employee5 = Employee("Lauren", 44, "tester", 900 + 100)
+employee5.salary = 2000
+print(employee5.annual_salary)
 
