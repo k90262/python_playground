@@ -9,6 +9,16 @@ def test_alarm_is_off_by_default():
     assert not alarm.is_alarm_on
 
 
+class StubSensor:
+    def sample_pressure(self):
+        return 17.0
+
+
+def test_alarm_is_on_at_lower_threshold():
+    alarm = Alarm(StubSensor())
+    alarm.check()
+    assert alarm.is_alarm_on
+
 # class StubSensor:
 #     def sample_pressure(self):
 #         return 17.0
