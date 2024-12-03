@@ -13,7 +13,7 @@ class Alarm:
         pressure = self._sensor.sample_pressure()
         # bug: should be <= and >=
         if pressure <= self._low_pressure_threshold \
-                or pressure > self._high_pressure_threshold:
+                or pressure >= self._high_pressure_threshold:
             self._is_alarm_on = True
 
     @property

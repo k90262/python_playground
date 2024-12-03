@@ -19,6 +19,13 @@ def test_alarm_is_on_at_lower_threshold():
     alarm.check()
     assert alarm.is_alarm_on
 
+def test_alarm_is_on_at_higher_threshold():
+    stubSensor = Mock(Sensor);
+    stubSensor.sample_pressure.return_value = 21.0
+    alarm = Alarm(stubSensor)
+    alarm.check()
+    assert alarm.is_alarm_on
+
 # class StubSensor:
 #     def sample_pressure(self):
 #         return 17.0
