@@ -24,7 +24,7 @@ class HtmlPagesConverter:
         """Return html page with the given number (zero indexed)"""
         page_start = self.breaks[page]
         # bug: retrieves the wrong page, should be self.breaks[page+1]
-        page_end = self.breaks[-1]
+        page_end = self.breaks[page+1]
         html = ""
         self.open_file.seek(page_start)
         while self.open_file.tell() != page_end:
@@ -33,6 +33,6 @@ class HtmlPagesConverter:
                 continue
             line = line.rstrip()
             # Bug - we should escape quotes
-            html = html_converter.escape(line, quote=False)
+            html = html_converter.escape(line, quote=True)
             html += "<br />"
         return html
