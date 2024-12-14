@@ -19,5 +19,5 @@ class DiscountManager:
         for user in users:
             if user.has_previously_bought(product):
                 # Bug! This should not be key_user, it should be 'user'
-                self.notifier.notify(key_user,
+                self.notifier.notify(user,
                                      f"You may be interested in a discount on this product! {product.name}")
