@@ -21,3 +21,11 @@ def test_ten_percent_discount(teller, cart, toothbrush):
     receipt = teller.checks_out_articles_from(cart)
 
     approvaltests.verify(ReceiptPrinter().print_receipt(receipt))
+
+def test_three_for_two_discount(teller, cart, toothbrush):
+    teller.add_special_offer(SpecialOfferType.THREE_FOR_TWO, toothbrush, 10.0)
+    cart.add_item_quantity(toothbrush, 3)
+
+    receipt = teller.checks_out_articles_from(cart)
+
+    approvaltests.verify(ReceiptPrinter().print_receipt(receipt))
