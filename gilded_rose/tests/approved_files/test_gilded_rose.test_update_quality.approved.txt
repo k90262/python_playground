@@ -1,1 +1,1 @@
-Item(foo, sell_in=-1, quality=0)
+('foo', 0, 0) => Item(foo, sell_in=-1, quality=0)
