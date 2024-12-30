@@ -6,8 +6,8 @@ from gilded_rose import Item, GildedRose
 
 def test_update_quality():
     names = ["foo", "Aged Brie", "Backstage passes to a TAFKAL80ETC concert", "Sulfuras, Hand of Ragnaros"]
-    sell_ins = [0, 1, 7, 13]
-    qualitys = [0, 1, 6, 60]
+    sell_ins = [-1, 0, 6, 11]
+    qualitys = [0, 1, 2, 49, 60]
 
     approvaltests.verify_all_combinations(
         update_quality_for_item,
