@@ -1,7 +1,20 @@
-import scorer
-from scorer import get_score, IceCream
+import approvaltests
 
+import scorer
+from scorer import get_score, IceCream, get_score_with_weather
 
 def test_scorer():
-    assert get_score() == -1
+    #assert get_score_with_weather(True, IceCream.Strawberry) == 10
+    weathers = [True, False]
+    flavours = [IceCream.Strawberry, IceCream.Chocolate, IceCream.Vanilla, None]
+    approvaltests.verify_all_combinations(
+        get_score_with_weather,
+        [
+            weathers,
+            flavours
+        ],
+        formatter=print_get_score
+    )
 
+def print_get_score(args, result):
+    return f"{args} => {result}\n"
