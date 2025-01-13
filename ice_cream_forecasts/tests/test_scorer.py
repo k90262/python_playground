@@ -3,7 +3,7 @@ import approvaltests
 import scorer
 from scorer import get_score, IceCream, get_score_with_weather
 
-def test_scorer():
+def test_get_score_with_weather():
     #assert get_score_with_weather(True, IceCream.Strawberry) == 10
     weathers = [True, False]
     flavours = [IceCream.Strawberry, IceCream.Chocolate, IceCream.Vanilla, None]
