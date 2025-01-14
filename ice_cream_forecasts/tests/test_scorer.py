@@ -18,3 +18,6 @@ def test_get_score_with_weather():
 
 def print_get_score(args, result):
     return f"{args} => {result}\n"
+
+def test_lookup_weather_default_location():
+    assert scorer.lookup_weather()==True
