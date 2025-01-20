@@ -1,4 +1,5 @@
 import approvaltests
+import requests
 
 import scorer
 from scorer import get_score, IceCream, get_score_with_weather
@@ -19,5 +20,18 @@ def test_get_score_with_weather():
 def print_get_score(args, result):
     return f"{args} => {result}\n"
 
-def test_lookup_weather_default_location():
+
+class StubWeatherServiceResponse:
+    def __init__(self):
+        self.status_code = 200
+
+    def json(self):
+        return {"weather":{"main":"Sunny"}}
+
+
+def test_lookup_weather_default_location(monkeypatch):
+    def stub_requests_get(*args, **kwargs):
+        return StubWeatherServiceResponse();
+
+    monkeypatch.setattr(requests, "get", stub_requests_get)
     assert scorer.lookup_weather()==True
